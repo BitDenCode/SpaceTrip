@@ -157,15 +157,53 @@ const submitForm = () => {
 .checkbox-label {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   font-size: 15px;
-  color: #ccc;
+  color: #ddd;
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+  padding: 12px 16px;
+  border-radius: 12px;
+  box-shadow: 0 0 6px rgba(79, 195, 247, 0.3);
 }
 
 .checkbox-label input[type='checkbox'] {
-  transform: scale(1.6);
-  accent-color: var(--accent-color);
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--accent-color);
+  border-radius: 4px;
+  background-color: transparent;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.2s ease;
 }
+
+.checkbox-label input[type='checkbox']:checked {
+  background-color: var(--accent-color);
+}
+
+.checkbox-label input[type='checkbox']::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 7px;
+  width: 5px;
+  height: 10px;
+  border: solid black;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.checkbox-label input[type='checkbox']:checked::after {
+  opacity: 1;
+}
+
+
+
 
 button {
   padding: 12px;
